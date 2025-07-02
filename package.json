@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "lamdera": "lamdera make src/Main.elm",
+    "test": "elm make src/Main.elm"
+  },
+  "dependencies": {
+    "lamdera": "^0.19.1-1.3.2"
+  }
+}
