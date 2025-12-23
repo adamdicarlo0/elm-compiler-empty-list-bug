@@ -36,29 +36,3 @@ indicate it should be the root `Platform` module (due to the bad
 `source-directories` entry).
 
 When the `source-directories` entry is fixed, everything is fine.
-
-## Comparison with Lamdera
-
-Try `npm run lamdera` to attempt compiling with Lamdera (run `npm install`
-first, if you don't have Lamdera handy):
-
-    $ npm run lamdera
-
-    > lamdera
-    > lamdera make src/Main.elm
-
-    Detected problems in 1 module.
-    -- AMBIGUOUS IMPORT ----------------------------------------------- src/Main.elm
-
-    You are trying to import a `Platform` module:
-
-      ^
-    But I found multiple modules with that name. One in the elm/core package, and
-    another defined locally in the
-    /home/adam/work/elm-compiler-repro/codegen/Gen/Platform.elm file. I do not have
-    a way to choose between them.
-
-    Try changing the name of the locally defined module to clear up the ambiguity?
-
-Interestingly, the `^` pointing at the import points at nothing (there is no
-`import Platform` in the program; it's only an implied import).
