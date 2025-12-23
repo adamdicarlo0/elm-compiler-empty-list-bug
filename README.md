@@ -16,19 +16,26 @@ When running `elm make src/Main.elm` (available via `npm test` as well), Elm
       last, called at compiler/src/Reporting/Render/Code.hs:102:26 in main:Reporting.Render.Code
 
 The `elm.json` file in this repository contains an errant `source-directories`
-entry:
+entry, `codegen/Gen`:
 
-    "codegen/Gen"
+    "source-directories": [
+        "src",
+        "codegen/Gen"
+    ],
 
-which should be
+The source directories _should_ be:
 
-    "codegen"
+    "source-directories": [
+        "src",
+        "codegen"
+    ],
 
 The extra path segment eats up the `Gen` prefix for `codegen/Gen/Platform.elm`.
 Though the file declares itself as `module Gen.Platform`, its path seems to
-indicate it should be the root `Platform` module.
+indicate it should be the root `Platform` module (due to the bad
+`source-directories` entry).
 
-When the `elm.json` entry is fixed, everything is fine.
+When the `source-directories` entry is fixed, everything is fine.
 
 ## Comparison with Lamdera
 
